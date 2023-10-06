@@ -23,3 +23,7 @@ body{
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.date-container{
+    font-size: 20px;
+    font-weight: 100;
+}
