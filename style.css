@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100,200,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
 
 *{
     margin: 0;
@@ -65,5 +65,49 @@ body{
 .future-forecast{
     padding: 25px;
     position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: rgba(24, 24, 27, 0.8);
+    width: 100%;
+}
+.future-forecast .today{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.future-forecast .today .day{
+    padding: 5px 15px;
+    background: #3c3c44;
+    border-radius: 50px;
+    text-align: center;
+
+}
+.future-forecast .today .temp{
+    font-size: 20px;
+    padding-top: 15px;
+
+}
+.future-forecast .forecast{
+    display: flex;
     
+}
+.forecast .forecast-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 30px;
+    
+}
+.forecast .forecast-items .day{
+    padding: 5px 15px;
+    background: #3c3c44;
+    border-radius: 50px;
+    text-align: center;
+}
+.forecast .forecast-items .temp{
+    font-weight: 200;
 }
