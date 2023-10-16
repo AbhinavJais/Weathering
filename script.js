@@ -9,6 +9,8 @@ const currenttempEl = document.getElementById('current-temp');
 const days = ['Sunday' , 'Monday', 'Tuesday', 'Wednesday' , 'Friday', 'Saturday'];
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+const API_KEY = 'c28fb9057b77d21891cb599d9e359116'
+
 setInterval(() => {
    const time = new Date();
    const month = time.getMonth();
@@ -26,3 +28,38 @@ setInterval(() => {
 
 }, 1000);
 
+
+
+function getWeatherData() {
+   navigator.geolocation.getCurrentPosition((success) => {
+       let {latitude, longitude} = success.coords;
+
+       console.log(success);
+
+       fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units:metric&cnt={cnt}&appid=${API_KEY}`).then(res =>res.json()).then(data =>{
+
+       console.log(data)
+       })
+   })
+   
+}
+getWeatherData()
+
+function showWeatherData(data) {
+
+   let{humidity,pressure,sunrise,sunset,wind_speed} = data.current;
+
+   currentweatheritemsEL.innerHTML = `<div class="weather-items">
+       <div>Humidity</div>
+       <div>${humidity}%</div>
+      div>
+      <div class="weather-items">
+       <div>Pressure</div>
+       <div>${pressure} hPa</div>
+      div>
+      <div class="weather-items">
+       <div>Wind Speed</div>
+       <div>${wind_speed} m/s</div>
+      div>`
+   
+}
