@@ -7,12 +7,12 @@
 }
 body{
     font-family: 'Poppins', sans-serif;
-    background-image: url(https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=1024x1024&w=is&k=20&c=P68MuQDaXK7NM55yd1ivyrW7NZ2CokCNSfDcXe8BdH0=);
+    background-image: url(snow.gif);
     background-repeat: no-repeat;
     width: 100%;
     height: 100vh;
-    background-size: cover;
-    overflow: hidden;
+    background-size:cover;
+    /* overflow: hidden; */
 }
 .container{
     padding: 20px 20px;
@@ -72,11 +72,18 @@ body{
     color: white;
     background: rgba(24, 24, 27, 0.8);
     width: 100%;
+    overflow-y: hidden;
 }
 .future-forecast .today{
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 40px;
+    padding-right: 40px;
+
+    background: rgba(0, 0, 0, 0.2);
 }
 .future-forecast .today .day{
     padding: 5px 15px;
@@ -86,7 +93,7 @@ body{
 
 }
 .future-forecast .today .temp{
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 15px;
 
 }
@@ -103,6 +110,7 @@ body{
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
 
 }
 .forecast .forecast-items .day{
@@ -113,6 +121,7 @@ body{
 }
 .forecast .forecast-items .temp{
     font-weight: 200;
+    font-size: 12px;
 }
 
 @media only screen and (max-width:730px) {
@@ -126,7 +135,7 @@ body{
         overflow-y: scroll;
     }
     .future-forecast .today .temp{
-        font-size: 23px;
+        font-size: 16px;
 
     }
     .date-container .time{
@@ -159,6 +168,6 @@ body{
     .future-forecast{
         justify-content: start;
         align-items: none;
-        overflow-y: scroll;
+        overflow-x: scroll;
     }
 }
