@@ -47,18 +47,6 @@ setInterval(() => {
 const API_URL =
   "https://api.openweathermap.org/data/2.5/forecast?q=noida&units=metric&exclude=hourly,minutely";
 
-// async function checkweather(){
-//    const response = await fetch(API_URL + `&appid=${API_KEY}`);
-//    var data = await response.json();
-
-//    console.log(data)
-
-//    document.querySelector(".Humidity").innerHTML = data.list[0].main.humidity;
-//    document.querySelector(".Pressure").innerHTML = data.main.pressure;
-
-// }
-//  checkweather();
-
 function getWeatherData() {
   //  navigator.geolocation.getCurrentPosition((success) => {
   //      let {latitude, longitude} = success.coords;
@@ -81,6 +69,7 @@ fetch(API_URL + `&appid=${API_KEY}`)
     document.querySelector(".Pressure").innerHTML = data.list[0].main.pressure;
     document.querySelector(".Wind").innerHTML = data.list[0].wind.speed;
     document.querySelector(".sun-rise").innerHTML = data.city.sunrise;
+    document.querySelector(".sun-set").innerHTML = data.city.sunset;
     //  showWeatherData()
   });
 
@@ -90,20 +79,17 @@ function showWeatherData(data) {
   let { humidity, pressure, sunrise, sunset, wind_speed } = data.city;
 
   timezoneEL = data.timezone;
-  currentweatheritemsEL.innerHTML = `<div class="weather-item">
-      <div>Humidity</div>
-      <div>${humidity}%</div>
-  </div>
-  <div class="weather-item">
-      <div>Pressure</div>
-      <div>${pressure}</div>
-  </div>
-  <div class="weather-item">
-      <div>Wind Speed</div>
-      <div>${wind_speed}</div>
-  </div> 
-  `;
+  currentweatheritemsEL.innerHTML = `div class="weather-items">
+  div class="weather-item">
+        <div>Sunrise</div>
+        <div>${window.moment(sunrise * 1000).format('HH:mm a')}</div>
+    </div>
+    <div class="weather-item">
+        <div>Sunset</div>
+        <div>${window.moment(sunset*1000).format('HH:mm a')}</div>
+    </div>`;
 }
+
 // switch (weather) {
 //   case "Snow":
 //     break;
