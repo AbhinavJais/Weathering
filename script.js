@@ -65,11 +65,12 @@ fetch(API_URL + `&appid=${API_KEY}`)
     console.log(temp);
     console.log(main);
     console.log(city);
+    document.querySelector(".ttemp").innerHTML = data.list[0].main.temp;
     document.querySelector(".Humidity").innerHTML = data.list[0].main.humidity;
     document.querySelector(".Pressure").innerHTML = data.list[0].main.pressure;
     document.querySelector(".Wind").innerHTML = data.list[0].wind.speed;
-    document.querySelector(".sun-rise").innerHTML = data.city.sunrise;
-    document.querySelector(".sun-set").innerHTML = data.city.sunset;
+    // document.querySelector(".sun-rise").innerHTML = data.city.sunrise;
+    // document.querySelector(".sun-set").innerHTML = data.city.sunset;
     //  showWeatherData()
   });
 
