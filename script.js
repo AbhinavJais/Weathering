@@ -52,21 +52,11 @@ setInterval(() => {
   dateEL.innerHTML = days[day] + "," + date + " " + months[month];
 }, 1000);
 
-
 // API key and URL -->
 const API_KEY = "1d18cafdd8150ecfb53aa6f050beffa4";
 const API_URL = `https://api.openweathermap.org/data/2.5/forecast?&units=metric&exclude=hourly,minutely&q=`;
 
 // function for getting the current location. -->
-function getWeatherData() {
-  navigator.geolocation.getCurrentPosition((success) => {
-    console.log(success);
-    const API_KEY = "1d18cafdd8150ecfb53aa6f050beffa4";
-    let {latitude, longitude } = success.coords;
-    // fetch(`https://api.openweathermap.org/data/2.5/forecast?&lat=${latitude}&lon=${longitude}&units=metric&exclude=hourly,minutely&appid=${API_KEY}&q=`)
-    
-  });
-}
 async function locatio(){
   navigator.geolocation.getCurrentPosition((success) => {
     // console.log(success);
@@ -544,12 +534,10 @@ function checkWeather(city) {
     });
 }
 
-
 // for searching of city and calling the function
 let search = searchBtn.addEventListener("click", ()=>{
   checkWeather(searchBox.value);
 })
-
 
 //ignore this function for now -->
 function showWeatherData(data) {
@@ -568,7 +556,6 @@ function showWeatherData(data) {
 }
 
 //coding of gsap animation
-
 var tl = gsap.timeline()
 
 tl.from(".other,#current, .forecast-items",{
@@ -579,5 +566,3 @@ tl.from(".other,#current, .forecast-items",{
   scale:0,
   stagger:0.1,
 })
-
-
