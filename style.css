@@ -12,7 +12,7 @@ body{
     width: 100%;
     height: 100vh;
     background-size:cover;
-    /* overflow: hidden; */
+    overflow : hidden;
 }
 .container{
     padding: 20px 20px;
@@ -28,14 +28,19 @@ body{
 }
 .date-container .time{
     font-size: 70px;
+    font-weight: 200;
+    filter: drop-shadow(5px 5px 6px rgb(36, 36, 36));
    
 }
 .date-container #am-pm{
     font-size: 30px;
     margin-left: 10px;
+    filter: drop-shadow(2px 2px 12px rgb(71, 71, 71));
 }
 .date-container .date{
+    font-weight: 200;
     font-size: 30px;
+    filter: drop-shadow(2px 2px 3px rgb(24, 24, 24));
 }
 .place-container{
     text-align: end;
@@ -49,28 +54,32 @@ body{
     border-radius:4px ;
     background:rgba(0, 0, 0, 0.2);
     border: 1px solid #eee;
-    color: whitesmoke;
+    color: white;
     font-size: 18px;
     font-weight: 200 !important;
+    box-shadow: 2px 2px 6px black;
     /* color: transparent ; */
 }
-.place-container button{
+.place-container input ::placeholder{
+    color: #eee;
+    
+}
+.place-container .searchbtn{
     border: 0;
     outline: 0;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    border: 1px solid white ;
+    color: white;
+    border-radius: 10%;
+    padding: 5px 12px;
     cursor: pointer;
     background: transparent;
-}
-.place-container img{
-    width: 20px;
-    
+    box-shadow: 2px 2px 6px black;
 }
 .place-container .city{
     font-size: 30px;
-    font-weight: 100;
+    font-weight: 200;
     margin-top: 20px;
+    filter: drop-shadow(2px 2px 3px rgb(24, 24, 24));
 }
 .place-container .country{
     font-size: 20px;
@@ -85,6 +94,7 @@ body{
     border: 1px solid #eee;
     margin-top: 20px;
     margin-bottom: 0px;
+    font-weight: 200;
 }
 .current-info .other .weather-items{
     display: flex;
@@ -119,7 +129,7 @@ body{
     text-align: center;
 
 }
-.future-forecast .today .temp{
+.future-forecast .today .others .currentD, .currentN{
     font-size: 18px;
     padding-top: 15px;
 
@@ -127,6 +137,9 @@ body{
 .future-forecast .forecast{
     display: flex;
     
+}
+.future-forecast img{
+    height: 15vh;
 }
 .forecast .forecast-items{
     display: flex;
@@ -140,13 +153,21 @@ body{
     background: rgba(0, 0, 0, 0.2);
 
 }
+.forecast .forecast-items img{
+    height: 16vh;
+}
+
 .forecast .forecast-items .day{
     padding: 5px 15px;
     background: #3c3c44;
     border-radius: 50px;
     text-align: center;
 }
-.forecast .forecast-items .temp{
+.forecast .forecast-items .day1, .day2, .day3, .day4, .day5, .day6{
+    font-weight: 200;
+    font-size: 15px;
+}
+.forecast .forecast-items .n1, .n2, .n3, .n4, .n5, .n6{
     font-weight: 200;
     font-size: 15px;
 }
@@ -165,7 +186,10 @@ body{
         align-items: none;
         overflow-y: scroll;
     }
-    .future-forecast .today .temp{
+    .future-forecast .today{
+        padding: 33px;
+    }
+    .future-forecast .today .others .currentD, .currentN{
         font-size: 16px;
 
     }
@@ -185,7 +209,7 @@ body{
     }
     .place-container .city{
         font-size: 20px;
-        margin-right: 90px;
+        margin-right: 200px;
     }
     .current-info .other{
         padding: 12px;
@@ -195,16 +219,13 @@ body{
         font-size: 14px;
     }
     .place-container input{
-        /* padding: 1px; */
-        margin-right: 10px;
         font-size: 15px;
     }
-    .place-container img{
-        width: 15px;
+    ::placeholder{
+        color: white;
     }
-    .place-container button{
-        width: 10px;
-        
+    .future-forecast img{
+        height: 15vh;
     }
 }
 

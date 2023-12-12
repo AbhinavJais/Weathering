@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;700&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="icons/favicon.png">
     <title>weather forecasting app</title>
   </head>
   <body>
@@ -35,24 +36,15 @@
               <div>Wind Speed</div>
               <div class="Wind">365 m/s</div>
             </div>
-            <!-- <div class="weather-items">
-              <div>Sun Rise</div>
-              <div class="sun-rise" >06:30 am</div>
-            </div>
-            <div class="weather-items">
-              <div>Sun Set</div>
-              <div class="sun-set">06:30 pm</div>
-            </div> -->
           </div>
         </div>
         <!-- to show the location inf0 -->
         <div class="place-container">
           <div class="search-bar">
             <input type="text" placeholder="Enter City Name" name="display">
-            <button><img src="search.png" alt="search"></button>
+            <button class="searchbtn">Search</button>
           </div>
           <div class="city" id="time-zone">ASIA/KOLKATA</div>
-          <!-- <div class="country">IN</div> -->
         </div>
       </div>
     </div>
@@ -60,82 +52,85 @@
     <div class="future-forecast" id="future-forecast">
       <div class="today" id="current">
         <img
-          src="http://openweathermap.org/img/wn/10d@2x.png"
+          src="icons/clearicon.png"
           alt="weather icon"
           class="w-icon"
         />
         <div class="others">
-          <div class="day">Monday</div>
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day">Today</div>
+          <div class="currentD">Day - 35.14&#176; C</div>
+          <div class="currentN">Night - 25.14&#176; C</div>
         </div>
       </div>
+      <!-- forecasting of other days -->
       <div class="forecast" id="forecast">
         <div class="forecast-items">
           <div class="day">Tue</div>
           <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="icons/clearicon.png"
             alt="weather icon"
-            class="w-icon"
+            class="w-icon1"
           />
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day1">Day - 35.14&#176; C</div>
+          <div class="n1">Night - 25.14&#176; C</div>
         </div>
         <div class="forecast-items">
           <div class="day">Wed</div>
           <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="icons/clearicon.png"
             alt="weather icon"
-            class="w-icon"
+            class="w-icon2"
           />
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day2">Day - 35.14&#176; C</div>
+          <div class="n2">Night - 25.14&#176; C</div>
         </div>
         <div class="forecast-items">
           <div class="day">Thur</div>
           <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="icons/clearicon.png"
             alt="weather icon"
-            class="w-icon"
+            class="w-icon3"
           />
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day3">Day - 35.14&#176; C</div>
+          <div class="n3">Night - 25.14&#176; C</div>
         </div>
         <div class="forecast-items">
           <div class="day">Fri</div>
           <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="icons/clearicon.png"
             alt="weather icon"
-            class="w-icon"
+            class="w-icon4"
           />
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day4">Day - 35.14&#176; C</div>
+          <div class="n4">Night - 25.14&#176; C</div>
         </div>
         <div class="forecast-items">
           <div class="day">Sat</div>
           <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="icons/clearicon.png"
             alt="weather icon"
-            class="w-icon"
+            class="w-icon5"
           />
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day5">Day - 35.14&#176; C</div>
+          <div class="n5">Night - 25.14&#176; C</div>
         </div>
         <div class="forecast-items">
           <div class="day">Sun</div>
           <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
+            src="icons/clearicon.png"
             alt="weather icon"
-            class="w-icon"
+            class="w-icon6"
           />
-          <div class="temp">Day - 35.14&#176; C</div>
-          <div class="temp">Night - 25.14&#176; C</div>
+          <div class="day6">Day - 35.14&#176; C</div>
+          <div class="n6">Night - 25.14&#176; C</div>
         </div>
       </div>
     </div>
 
+    <!-- gsap link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js" integrity="sha512-7Au1ULjlT8PP1Ygs6mDZh9NuQD0A5prSrAUiPHMXpU6g3UMd8qesVnhug5X4RoDr35x5upNpx0A6Sisz1LSTXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <!-- js link -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src="script.js"></script>
   </body>
 </html>
