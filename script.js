@@ -15,7 +15,7 @@ const weatherIcon4 = document.querySelector(".w-icon4");
 const weatherIcon5 = document.querySelector(".w-icon5");
 const weatherIcon6 = document.querySelector(".w-icon6");
 const dateContainer = document.getElementsByClassName(".date-container")
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Friday", "Saturday"];
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday" ,"Friday", "Saturday"];
 const months = [
   "Jan",
   "Feb",
@@ -89,11 +89,39 @@ async function locatio(){
 
       //for the day temperature -->
       document.querySelector(".currentD").innerHTML = "Temp - " + Math.round(data.list[0].main.temp) + "°C";
-      document.querySelector(".day1").innerHTML = "Temp - " + Math.round(data.list[1].main.temp) + "°C";
+      document.querySelector(".day1").innerHTML = "Temp - " + Math.round(data.list[8].main.temp) + "°C";
+      document.querySelector(".day2").innerHTML = "Temp - " + (data.list[16].main.temp) + "°C";
+      document.querySelector(".day3").innerHTML = "Temp - " + (data.list[24].main.temp) + "°C";
+      document.querySelector(".day4").innerHTML = "Temp - " + (data.list[32].main.temp) + "°C";
+      document.querySelector(".day5").innerHTML = "Temp - " + Math.round(data.list[39].main.temp)+ "°C";
+      document.querySelector(".day6").innerHTML = "Temp - " + Math.round(data.list[39].main.temp)+ "°C";
+
 
       //for the weather info -->
       document.querySelector(".currentN").innerHTML = data.list[0].weather[0].main ;
-      document.querySelector(".n1").innerHTML = data.list[1].weather[0].main ;
+      document.querySelector(".n1").innerHTML = data.list[8].weather[0].main ;
+      document.querySelector(".n2").innerHTML = data.list[16].weather[0].main ;
+      document.querySelector(".n3").innerHTML = data.list[24].weather[0].main ;
+      document.querySelector(".n4").innerHTML = data.list[32].weather[0].main ;
+      document.querySelector(".n5").innerHTML = data.list[39].weather[0].main ;
+      document.querySelector(".n6").innerHTML = data.list[39].weather[0].main ;
+
+      // for the upcoming days -->
+      const indices = [8, 16, 24, 32, 39];
+      for (let i = 0; i < indices.length; i++) {
+         const index = indices[i];
+         const currentDate = new Date(data.list[index].dt_txt);
+         const dayIndex = currentDate.getDay();
+         const dayOfWeek = days[dayIndex];
+        
+         // Update HTML element with the calculated day of the week -->
+         const elementId = `day${i + 1}`;
+         const targetElement = document.getElementById(elementId);
+        
+         if (targetElement) {
+           targetElement.textContent = dayOfWeek;
+         }
+      }
      
 
 
@@ -286,34 +314,14 @@ async function locatio(){
      })
   })
 }
-// locatio()
+locatio()
 
 //function for the fetching api and data --> 
 function checkWeather(city) {
   fetch(API_URL + city+`&appid=${API_KEY}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-
-    //   function chunkArray(array, chunkSize) {
-    //     let result = [];
-    //     for (let i = 0; i < array.length; i += chunkSize) {
-    //         result.push(array.slice(i, i + chunkSize));
-    //     }
-    //     return result;
-    // }
-    //   const nextSevenDays = chunkArray(data.list, 7);
-    //   const daysHTMLElement = Array.from(document.querySelectorAll('.day'));
-
-      // daysHTMLElement.forEach((domNode, idx)=>{
-      //   const dayInNumber =  new Date(nextSevenDays[idx].dt_txt).getDay();
-      //   console.log(dayInNumber)
-        // const day = days[dayInNumber];
-      //   console.log(day)
-      //   domNode.textContent = day;
-      // });
-
-// console.log('ln 309 ',daysHTMLElement, nextSevenDays);      
+      console.log(data);    
 
       let cityn = data.city.name;
       let main = data.list[0].main;
@@ -354,7 +362,6 @@ function checkWeather(city) {
       document.querySelector(".n4").innerHTML = data.list[32].weather[0].main ;
       document.querySelector(".n5").innerHTML = data.list[39].weather[0].main ;
       document.querySelector(".n6").innerHTML = data.list[39].weather[0].main ;
-
 
       //for the changing background according to the weather. -->
       switch (weather) {     
@@ -543,15 +550,18 @@ function checkWeather(city) {
         weatherIcon6.src = "icons/drizzleicon.png"
       }
 
+        //making the input field empty -->
+        searchBox.value = "";
+
     });
 }
 
 // for searching of city and calling the function
 let search = searchBtn.addEventListener("click", ()=>{
-  // checkWeather(searchBox.value);
+  checkWeather(searchBox.value);
 })
+// checkWeather('Noida')
 
-checkWeather('Noida')
 //ignore this function for now -->
 function showWeatherData(data) {
   let { humidity, pressure, sunrise, sunset, wind_speed } = data.city;
@@ -579,27 +589,3 @@ tl.from(".other,#current, .forecast-items",{
   scale:0,
   stagger:0.1,
 })
-
-
-/* 
-
-const dayInNumber =  new Date(nextSevenDays[idx].dt_txt).getDay();
-const day = days[dayInNumber]
-document.querySelector(".n1").innerHTML = data.list[0].dt_txt; 
-document.querySelector(".n2").innerHTML = data.list[8].dt_txt; 
-document.querySelector(".n3").innerHTML = data.list[16].dt_txt; 
-document.querySelector(".n4").innerHTML = data.list[24].dt_txt; 
-document.querySelector(".n5").innerHTML = data.list[32].dt_txt; 
-document.querySelector(".n6").innerHTML = data.list[40].dt_txt; 
-
-*/
-
-
-/* 
-const n1 = new Date(data.list[0].dt_txt); 
-      console.log(n1)
-      let d = n1.getDay();
-      const j = days[d]
-      console.log(j)
-      document.querySelector(".n1").innerHTML = j;
-*/
